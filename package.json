@@ -1,0 +1,28 @@
+{
+  "name": "vue-tilt",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": {
+    "name": "eric",
+    "email": "erichuang80s@gmail.com"
+  },
+  "main": "./dist/vue-tilt.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-tilt.esm.js"
+    }
+  },
+  "dependencies": {
+    "vanilla-tilt": "^1.8.1",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}

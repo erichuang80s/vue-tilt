@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"></script>
+  <script src="../dist/vue-tilt.js"></script>
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100vh;
+    }
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    img {
+      border-radius: 12px;
+      overflow: hidden;
+      &:hover {
+        filter: drop-shadow(24px 24px 16px rgba(0,0,0,.15));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="flex-center">
+    <vue-tilt :speed="1500" :scale="1.5">
+      <img :src="`https://picsum.photos/seed/${Date.now()}/400/300`" alt="picsum">
+    </vue-tilt>
+  </div>
+</body>
+<script>
+  const app = Vue.createApp({})
+  app.use(VueTilt)
+  app.mount('#app')
+</script>
+</html>
