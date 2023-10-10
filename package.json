@@ -2,6 +2,9 @@
   "name": "vue-tilt",
   "version": "0.0.1",
   "type": "module",
+  "publishConfig": {
+    "registry": "https://github.com/erichuang80s/vue-tilt.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
