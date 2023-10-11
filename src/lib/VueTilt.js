@@ -90,7 +90,6 @@ export default defineComponent({
     })
     onBeforeUnmount(() => target.value.vanillaTilt.destroy())
     watch(props, () => {
-      console.log(props)
       target.value.vanillaTilt.settings = target.value.vanillaTilt.extendSettings(props)
       target.value.vanillaTilt.reset()
     }, true)
