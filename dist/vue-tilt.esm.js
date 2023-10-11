@@ -42,7 +42,7 @@ class n {
     if (e.gamma === null || e.beta === null)
       return;
     this.updateElementPosition(), this.gyroscopeSamples > 0 && (this.lastgammazero = this.gammazero, this.lastbetazero = this.betazero, this.gammazero === null ? (this.gammazero = e.gamma, this.betazero = e.beta) : (this.gammazero = (e.gamma + this.lastgammazero) / 2, this.betazero = (e.beta + this.lastbetazero) / 2), this.gyroscopeSamples -= 1);
-    const i = this.settings.gyroscopeMaxAngleX - this.settings.gyroscopeMinAngleX, t = this.settings.gyroscopeMaxAngleY - this.settings.gyroscopeMinAngleY, s = i / this.width, a = t / this.height, r = e.gamma - (this.settings.gyroscopeMinAngleX + this.gammazero), o = e.beta - (this.settings.gyroscopeMinAngleY + this.betazero), g = r / s, u = o / a;
+    const i = this.settings.gyroscopeMaxAngleX - this.settings.gyroscopeMinAngleX, t = this.settings.gyroscopeMaxAngleY - this.settings.gyroscopeMinAngleY, s = i / this.width, l = t / this.height, r = e.gamma - (this.settings.gyroscopeMinAngleX + this.gammazero), o = e.beta - (this.settings.gyroscopeMinAngleY + this.betazero), g = r / s, u = o / l;
     this.updateCall !== null && cancelAnimationFrame(this.updateCall), this.event = {
       clientX: g + this.left,
       clientY: u + this.top
@@ -74,13 +74,13 @@ class n {
   getValues() {
     let e, i;
     this.fullPageListening ? (e = this.event.clientX / this.clientWidth, i = this.event.clientY / this.clientHeight) : (e = (this.event.clientX - this.left) / this.width, i = (this.event.clientY - this.top) / this.height), e = Math.min(Math.max(e, 0), 1), i = Math.min(Math.max(i, 0), 1);
-    let t = (this.reverse * (this.settings.max - e * this.settings.max * 2)).toFixed(2), s = (this.reverse * (i * this.settings.max * 2 - this.settings.max)).toFixed(2), a = Math.atan2(this.event.clientX - (this.left + this.width / 2), -(this.event.clientY - (this.top + this.height / 2))) * (180 / Math.PI);
+    let t = (this.reverse * (this.settings.max - e * this.settings.max * 2)).toFixed(2), s = (this.reverse * (i * this.settings.max * 2 - this.settings.max)).toFixed(2), l = Math.atan2(this.event.clientX - (this.left + this.width / 2), -(this.event.clientY - (this.top + this.height / 2))) * (180 / Math.PI);
     return {
       tiltX: t,
       tiltY: s,
       percentageX: e * 100,
       percentageY: i * 100,
-      angle: a
+      angle: l
     };
   }
   updateElementPosition() {
@@ -197,11 +197,11 @@ class n {
       if (s in e)
         t[s] = e[s];
       else if (this.element.hasAttribute("data-tilt-" + s)) {
-        let a = this.element.getAttribute("data-tilt-" + s);
+        let l = this.element.getAttribute("data-tilt-" + s);
         try {
-          t[s] = JSON.parse(a);
+          t[s] = JSON.parse(l);
         } catch {
-          t[s] = a;
+          t[s] = l;
         }
       } else
         t[s] = i[s];
@@ -295,19 +295,19 @@ const h = d({
     }
   },
   emits: ["tiltChange"],
-  setup(l, { slots: e, emit: i }) {
+  setup(a, { slots: e, emit: i }) {
     const t = m();
     return c(() => {
-      n.init(t.value, l), t.value.addEventListener("tiltChange", (s) => i("tiltChange", s));
-    }), p(() => t.value.vanillaTilt.destroy()), f(l, () => {
-      console.log(l), t.value.vanillaTilt.settings = t.value.vanillaTilt.extendSettings(l), t.value.vanillaTilt.reset();
+      n.init(t.value, a), t.value.addEventListener("tiltChange", (s) => i("tiltChange", s));
+    }), p(() => t.value.vanillaTilt.destroy()), f(a, () => {
+      t.value.vanillaTilt.settings = t.value.vanillaTilt.extendSettings(a), t.value.vanillaTilt.reset();
     }, !0), () => [
       v("div", { ref: (s) => t.value = s }, e)
     ];
   }
 }), b = {
-  install(l, e) {
-    l.component((e == null ? void 0 : e.name) || h.name, h);
+  install(a, e) {
+    a.component((e == null ? void 0 : e.name) || h.name, h);
   }
 };
 export {
